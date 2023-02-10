@@ -29,6 +29,7 @@ function createElements (arr) {
   arr.forEach(element => {
     const newElem = document.createElement('li');
     newElem.textContent = element;
+    newElem.classList.add('item');
     // console.log(newElem)
     newItems.push(newElem)
   });

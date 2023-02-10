@@ -16,15 +16,19 @@ const lengValue = inputRef.getAttribute('data-length');
 console.log(lengValue);
 
 inputRef.addEventListener('blur', () => {
-    if(inputRef.value.length > 0 && inputRef.value.length < lengValue) {
-        inputRef.classList.add('invalid');
+    let inputLength = inputRef.value.length;
+// если количество символов в поле меньше или больше необходимого, класс invalid
+    if(inputLength < lengValue || inputLength > lengValue) {
         inputRef.classList.remove('valid');
+        inputRef.classList.add('invalid');
     }
-    if(inputRef.value.length >= lengValue) {
+// если нужное количество символов ставим класс valid
+    if(inputLength == lengValue) {
         inputRef.classList.remove('invalid');
         inputRef.classList.add('valid');
     }
-    if(inputRef.value.length === 0) {
+// если мы начали вводить символы, потом их удалили, все возвращается в исходное состояние.
+    if(inputLength === 0) {
         inputRef.classList.remove('invalid');
         inputRef.classList.remove('valid');
     }
