@@ -31,7 +31,7 @@ refs.input.addEventListener('input', (event) => value = event.currentTarget.valu
 
 function createBoxes(amount) {
 
-  refs.divBoxes.innerHTML = '';
+  // refs.divBoxes.innerHTML = ''; //var1
 
   const newDivs = [];
 
@@ -45,14 +45,21 @@ function createBoxes(amount) {
 
   value = 0;
 
-  refs.divBoxes.insertAdjacentHTML("afterbegin", newDivs.join(''));
+  refs.divBoxes.innerHTML = newDivs.join(''); //var2
+
+  // refs.divBoxes.insertAdjacentHTML("afterbegin", newDivs.join('')); //var1
 }
 
 refs.create.addEventListener('click', () => createBoxes(value));
 
-refs.destroy.addEventListener('click', () => {
+// refs.destroy.addEventListener('click', () => {
+//   refs.divBoxes.innerHTML = '';
+//   refs.input.value = '';
+// });
+
+function destroyBoxes() {
   refs.divBoxes.innerHTML = '';
   refs.input.value = '';
-});
+}
 
-
+refs.destroy.addEventListener('click', destroyBoxes);
